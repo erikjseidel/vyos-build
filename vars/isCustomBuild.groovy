@@ -19,8 +19,8 @@ def call() {
     // Returns false if this is build from git@github.com:vyos/<reponame>.
     // <reponame> can be e.g. vyos-1x.git or vyatta-op.git
     // GitHub organisation base URL
-    def gitURI = 'git@github.com:vyos/' + getGitRepoName()
-    def httpURI = 'https://github.com/vyos/' + getGitRepoName()
+    def gitURI = 'git@github.com:erikjseidel/' + getGitRepoName()
+    def httpURI = 'https://github.com/erikjseidel/' + getGitRepoName()
 
     return !((getGitRepoURL() == gitURI) || (getGitRepoURL() == httpURI)) || isPullRequest()
 }
