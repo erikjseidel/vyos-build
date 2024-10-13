@@ -1,4 +1,4 @@
-// Copyright (C) 2023-2024 VyOS maintainers and contributors
+// Copyright (C) 2024 VyOS maintainers and contributors
 //
 // This program is free software; you can redistribute it and/or modify
 // in order to easy exprort images built to "external" world
@@ -12,19 +12,20 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 @NonCPS
 
-// Using a version specifier library, use 'sagitta' branch. The underscore (_)
+// Using a version specifier library, use 'current' branch. The underscore (_)
 // is not a typo! You need this underscore if the line immediately after the
 // @Library annotation is not an import statement!
-@Library('vyos-build@sagitta')_
+@Library('vyos-build@current')_
 
 def pkgList = [
-    ['name': 'ddclient',
-     'scmCommit': 'debian/3.11.2-1',
-     'scmUrl': 'https://salsa.debian.org/debian/ddclient',
-     'buildCmd': 'sudo mk-build-deps --install --tool "apt-get --yes --no-install-recommends"; dpkg-buildpackage  -uc -us -tc -b'],
+    ['name': 'podman',
+     'scmCommit': 'v4.9.5',
+     'scmUrl': 'https://github.com/containers/podman',
+     'buildCmd': 'cd ..; ./build.sh'],
 ]
 
 // Start package build using library function from https://github.com/vyos/vyos-build
-buildPackage('ddclient', pkgList, null, null, "**/packages/ddclient/**")
+buildPackage('podman', pkgList, null, true, "**/packages/podman/**")
